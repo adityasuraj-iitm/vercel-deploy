@@ -14,7 +14,7 @@ def find_data_by_name(name: str):
 def get_data(name: List[str] = Query(...)):
     result = []
     for n in name:
-        data = find_data_by_name(name)
+        data = find_data_by_name(n)
         result.append(data)
     return {
         "marks":result
