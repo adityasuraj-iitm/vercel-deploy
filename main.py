@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Query, HTTPException
-from typing import Optional
+from typing import List, Optional  # Added List import
 import json
 
 app = FastAPI()
@@ -14,8 +14,12 @@ def find_data_by_name(name: str):
 def get_data(name: List[str] = Query(...)):
     result = []
     for n in name:
-        data = find_data_by_name(n)
-        result.append(data)
+        data_item = find_data_by_name(n)  # Corrected from 'name' to 'n'
+        if data_item:  # Check if data exists
+            result.append(data_item)
+        else:
+            raise HTTPException(status_code=404, detail=f"Data for name '{n}' not found")
+    
     return {
-        "marks":result
+        "marks": result
     }
