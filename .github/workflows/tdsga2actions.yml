@@ -1,0 +1,7 @@
+name: TDS Github actions test
+
+jobs:
+  test:
+    steps:
+      - name: 21f2000296@ds.study.iitm.ac.in
+        run: echo "Hello, world!"
