@@ -8,7 +8,7 @@ with open('q-vercel-python.json') as f:
     data = json.load(f)
 
 def find_data_by_name(name: str):
-    return next((item for item in data if item['name'] == name), None)
+    return item['marks'] for item in data if item['name'] == name
 
 @app.get("/api")
 def get_data(name: List[str] = Query(...)):
