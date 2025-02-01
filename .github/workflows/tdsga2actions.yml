@@ -1,5 +1,7 @@
 name: TDS Github actions test
 
+on: push
+
 jobs:
   test:
     steps:
