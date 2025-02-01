@@ -1,8 +1,17 @@
 from fastapi import FastAPI, Query, HTTPException
-from typing import List, Optional  # Added List import
+from fastapi.middleware.cors import CORSMiddleware  # Added CORS middleware
+from typing import List, Optional
 import json
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], 
+    allow_credentials=True,
+    allow_methods=["*"], 
+    allow_headers=["*"],
+)
 
 with open('q-vercel-python.json') as f:
     data = json.load(f)
