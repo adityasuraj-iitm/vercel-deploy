@@ -28,8 +28,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --local user.email "21f2000296@ds.study.iitm.ac.in"
+          git config --local user.name "adityasuraj-iitm"
           git add *.json
           git commit -m "Update IMDb Top 250 data [skip ci]" || exit 0
           git push
