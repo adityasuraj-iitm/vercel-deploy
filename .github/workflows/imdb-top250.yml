@@ -1,37 +1,32 @@
-name: Scrape IMDb Top 250
+name: Daily Commit Workflow
 
 on:
   schedule:
-    # Runs at 00:00 UTC every day
-    - cron: "0 0 * * *"
-  workflow_dispatch: # Allow manual triggers
+    # Runs daily at 02:30 UTC (change the time as needed)
+    - cron: "30 2 * * *"
+  workflow_dispatch: # Allows manual triggering
 
 jobs:
-  scrape-imdb:
+  daily-commit:
     runs-on: ubuntu-latest
     permissions:
       contents: write
 
     steps:
-      - name: Checkout repository
+      - name: "Commit by 21f2000296@ds.study.iitm.ac.in"
+        run: echo "Running daily commit workflow"
+
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-
-      - name: Install dependencies
+      - name: Make a Change
         run: |
-          pip install httpx lxml cssselect
+          echo "Workflow ran at $(date)" > run-log.txt
 
-      - name: Run scraper
-        run: python scrape.py
-
-      - name: Commit and push changes
+      - name: Commit and Push Changes
         run: |
           git config --local user.email "21f2000296@ds.study.iitm.ac.in"
           git config --local user.name "adityasuraj-iitm"
-          git add *.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update IMDb Top 250 data [skip ci]"
+          git add run-log.txt
+          git commit -m "Daily commit: $(date --utc +'%Y-%m-%d %H:%M:%S UTC')"
           git push
