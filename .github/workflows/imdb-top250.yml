@@ -1,9 +1,12 @@
 name: Scrape IMDb Top 250
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     # Runs at 00:00 UTC every day
-    - cron: "* * * * *"
+    - cron: "0 0 * * *"
   workflow_dispatch: # Allow manual triggers
 
 jobs:
