@@ -13,6 +13,8 @@ jobs:
       contents: write
 
     steps:
+      - name: 21f2000296@ds.study.iitm.ac.in
+        run: echo "hello aditya"
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -23,7 +25,7 @@ jobs:
         run: | # python
           uv run --with httpx,lxml,cssselect python scrape.py
 
-      - name: 21f2000296@ds.study.iitm.ac.in
+      - name: Commit and push changes
         env:
           GITHUB_TOKEN: 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
         run: |
