@@ -14,6 +14,7 @@ jobs:
 
     steps:
       - name: 21f2000296@ds.study.iitm.ac.in
+        run: echo "hello aditya"
     
       - name: Checkout repository
         uses: actions/checkout@v4
